@@ -48,7 +48,7 @@ Details of minimum requirements can be found here: https://minecraft.fandom.com/
 * A CPU with good single-core performance. The server (as of 1.14) does use additional cores for other operations, but typically three cores are used at most. 
 
 | Requirements | Number of Players | Recommended Memory | Lightsail Instance Plan | Approximate Price per hour |
-| -- | -- |  -- |  -- | 
+| -- | -- |  -- |  -- | -- | 
 | Minimum | 1-2 | 2 GB | USD$20 per month | $0.027 per hour |
 | Recommended | 2-5 | 4 GB | USD$40 per month | $0.055 per hour |
 | Optimal | 6+ | 8 GB | USD$70 per month | $0.096 per hour |
@@ -72,6 +72,16 @@ Assuming 730.5 hours per month, prices are in USD.
 
 Lightsail will return you to the Instances page and you should see your new Windows Server in a Pending state while it is being created. When the server is ready for use, select its name to view its connect details.
 
+### Create Static IP
+
+You can create static IP addresses to keep the same IP address every time you reboot your instance. For more information, see [Static IP addresses in Amazon Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/lightsail-create-static-ip). This makes it easier for your Minecraft clients to connect to your Minecraft server if you restart the instance.
+
+* In the Amazon Lightsail management console, open your new Windows Server instance
+* Select `+ Create static IP`
+* Identify your static IP with a unique name, e.g. minecraft-java-static-ip-v1
+* Select `Create`
+* Under Attach to an instance, select the name of your new Windows Server instance
+
 ## Connect to a Lightsail instance
 
 Lightsail offers a 1-click secure connection to your instance's terminal right from your browser, supporting SSH access for Linux/Unix-based instances and RDP access for Windows-based instances. To use 1-click connections, launch your instance management screens, click Connect using SSH or Connect using RDP, and a new browser window opens and automatically connects to your instance.
@@ -80,12 +90,22 @@ Lightsail offers a 1-click secure connection to your instance's terminal right f
 
 ## How to Setup a Minecraft: Java Edition Server
 
-
 ### Install Java 17 LTS
 
 Java 17 LTS is the latest long-term support release for the Java SE platform. JDK 17 binaries are free to use in production and free to redistribute, at no cost, under the Oracle No-Fee Terms and Conditions License.
 
+Download and install the latest version of Java from https://www.oracle.com/java/technologies/downloads/#jdk17-windows
 
+### Download Minecraft Server
+
+You can download the official Minecraft: Java Edition server from the Minecraft website or there are many forks of Minecraft. The installation and running is similar. To support plugins we recommend the Paper version.
+
+| Minecraft Server | Website |
+| -- | -- |
+| Official Minecraft Server | https://www.minecraft.net/en-us/download/server |
+| Paper | https://papermc.io/downloads |
+
+Download the .jar files for each and save into a new folder. e.g. "C:\Program Files\minecraft"
 
 ### Configure Windows Firewall
 
@@ -100,4 +120,19 @@ If Window's firewall are set incorrectly, it will black the connection to your M
   * Select `Add`
   * Tick the `Private` and `Public` checkboxes.
   * Select `OK` and close Control Panel.
+
+### Configure Lightsail Firewall
+
+You need to create Lightsail networking rules to open ports to the internet, or to a specific IPv4 address or range.
+
+* Log into your the AWS management console
+* Search for `Lightsail`
+* Open your Windows Server instance
+* Select `Networking`
+* Under IPv4 Firewall, select `+ Add rule`
+  * Add Application = Custom, Protocol = TCP, Port = 25565 
+  * Add Application = Custom, Protocol = UDP, Port = 25565 
+
+
+
 
