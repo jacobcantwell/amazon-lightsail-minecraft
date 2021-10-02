@@ -427,13 +427,3 @@ You still be charged for unattached resources if you do not delete them such as 
 * Select the three vertical dot menu button
 * Select `Create new instance`
 * Follow the steps above for `Setup a Windows Lightsail instance`
-
-## TODO List for this Document
-
-* Finish support for Bedrock Minecraft - the steps are similar but different ports are used
-* Add Application = Custom, Protocol = UDP, Port = 59478 
-* Search for the `minecraft-bedrock.exe`
-Todo: Add port 19132
-Todo: Add port 59478
-
-
