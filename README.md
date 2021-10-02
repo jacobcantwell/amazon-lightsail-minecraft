@@ -137,6 +137,14 @@ You need to create Lightsail networking rules to open ports to the internet, or 
   * Add Application = Custom, Protocol = TCP, Port = 25565 
   * Add Application = Custom, Protocol = UDP, Port = 25565 
 
+### Extending Minecraft: Java Edition with Plugins
 
+To install these plugins, create a `Plugins` folder inside your Minecraft folder and add the .jar file for the plugin.
+
+| Plugin | Description | URL | Notes |
+| -- | -- | -- | -- |
+| WorldEdit | A Minecraft map editor | https://www.curseforge.com/minecraft/mc-mods/worldedit | -- |
+| WorldGuard | Lets players guard areas of land | https://dev.bukkit.org/projects/worldguard | -- |
+| Dynmap | A Google Maps-like map for your Minecraft server | https://dev.bukkit.org/projects/dynmap | Need to open port 8213 |
 
 
