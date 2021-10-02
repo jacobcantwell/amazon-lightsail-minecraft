@@ -1,6 +1,6 @@
-# Minecraft Server on Amazon LightSail
+# Create a Minecraft Server on Amazon LightSail
 
-This document will walk you through setting up a Minecraft Server on Amazon LightSail.
+This document will walk you through setting up a Minecraft Server on Amazon LightSail. It includes all of the steps for creating an Amazon Lightsail instance, connecting to the instance, installing a Minecraft server, then terminating and restoring the Amazon LightSail instance.
 
 ## Table of Contents
 
@@ -112,8 +112,6 @@ Initate the remote desktop connection
 
 The Windows Server 2019 desktop should open.
 
-## Setup a Minecraft: Java Edition Server
-
 ### Internet Explorer Browser Security
 
 *We strongly recommend you consult your network administrator before performing the any security related steps. Making such configuration changes without consulting administrator may put your organization in a risk.*
@@ -130,6 +128,10 @@ Microsoft disables file downloads by default in some versions of Internet Explor
 * Click `OK` > `Apply` > `OK`.
 
 You can now download files.
+
+## Setup a Minecraft: Java Edition Server
+
+Minecraft Java edition is the original version of Minecraft that supports computer clients.
 
 ### Install Java 17 LTS
 
@@ -195,6 +197,47 @@ To install these plugins, create a `Plugins` folder inside your Minecraft folder
 | WorldGuard | Lets players guard areas of land | https://dev.bukkit.org/projects/worldguard | -- |
 | Dynmap | A Google Maps-like map for your Minecraft server | https://dev.bukkit.org/projects/dynmap | Need to open port 8213 |
 
+## Setup a Minecraft: Bedrock Edition Server
+
+The current release of the Minecraft: Bedrock edition server software is an early alpha release and is released for evaluation purposes.
+
+Minecraft Bedrock edition supports consoles, mobile devices and Windows 10.
+
+### Download Minecraft: Bedrock Edition Server
+
+You can download the official Minecraft: Bedrock Edition server from the Minecraft website.
+
+[Download Bedrock Server Software for Minecraft](https://www.minecraft.net/en-us/download/server/bedrock)
+
+### Configure Windows Server Firewall for Minecraft: Bedrock Edition
+
+If Window's firewall are set incorrectly, it will black the connection to your Minecraft server. 
+
+* Search for and open Window's `Control Panel`
+* Open `System and Security`
+* Under `Windows Defender Firewall`, select `Allow an app through Windows Defender Firewall`
+
+Todo: Add port 19132
+Todo: Add port 59478
+
+### Configure Amazon Lightsail Firewall for Minecraft: Bedrock Edition
+
+You need to create Lightsail networking rules to open ports to the internet, or to a specific IPv4 address or range.
+
+* Open the Amazon Lightsail management console
+* Open your Windows Server instance
+* Select `Networking`
+* Under IPv4 Firewall, select `+ Add rule`
+  * Add Application = Custom, Protocol = UDP, Port = 19132 
+  * Add Application = Custom, Protocol = UDP, Port = 59478 
+
+### Start Minecraft Server
+
+Download the .zip file and save into a new folder. e.g. "C:\Program Files\minecraft"
+
+Unzip the container file into an empty folder. Start the server by executing the bedrock_server.exe file.
+
+Follow the bundled how to guide to configure the server.
 
 ## Connecting Minecraft Clients
 
@@ -209,31 +252,52 @@ Minecraft Java edition is the original version of Minecraft that supports comput
 
 ## Securing Minecraft
 
-### OP
+The names and UUIDs of players can be discovered in the Minecraft server console when the players first join the server.
+ 
+### OP - Operator Status
+
+When settting up a server you need to edit a json file to grant a user operator status. The /op command can be used by existing operators to give other players operator status. When a player has been granted operator status, they can run game commands such as changing the gamemode, time, weather, etc.
+
+* In the Minecraft folder, edit the ops.json file
 
 ``json
 [
   {
-    "Name": "",
-    "UUID": ""
-    
+    "uuid": "####-replace-with-uuid-####",
+    "name": "####-replace-with-name-####"
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "####-replace-with-uuid-####",
+    "name": "####-replace-with-name-####"
+    "level": 4,
+    "bypassesPlayerLimit": false
   }
 ]
 ``
 
 ### Allow List
 
-* Configure server.properties
+To only allow known players to connect to your Minecraft sever, you need to enforce an allow list.
+
+* In the Minecraft folder, edit the whitelist.json file
 
 ``json
 [
   {
-    "Name": "",
-    "UUID": ""
-    
+    "uuid": "####-replace-with-uuid-####",
+    "name": "####-replace-with-name-####"
+  },
+  {
+    "uuid": "####-replace-with-uuid-####",
+    "name": "####-replace-with-name-####"
   }
 ]
 ``
+
+* Edit the server.properties file
+ * Change the setting `enforce-whitelist=true`
 
 ## Create an Amazon Lightsail Snapshot
 
@@ -283,3 +347,8 @@ You still be charged for unattached resources if you do not delete them such as 
 * Select the three vertical dot menu button
 * Select `Create new instance`
 * Follow the steps above for `Setup a Windows Lightsail instance`
+
+## TODO List for this Document
+
+* Check if need to open Windows firewall ports
+* Finish support for Bedrock Minecraft - the steps are similar but different ports are used
