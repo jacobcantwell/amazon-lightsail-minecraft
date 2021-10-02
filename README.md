@@ -3,8 +3,21 @@
 This document will walk you through setting up a Minecraft Server on Amazon LightSail. It includes all of the steps for creating an Amazon Lightsail instance, connecting to the instance, installing a Minecraft server, then terminating and restoring the Amazon LightSail instance.
 
 The instructions below will show you how to setup:
-* an Amazon Lightsail instance running either the Microsoft Windows or Ubuntu operating systems
-* either the Minecraft: Java Edition Server that supports computer clients, or the Minecraft: Bedrock Edition Server that supports consoles, mobile devices and Windows 10
+* An Amazon Lightsail instance running either
+  * Microsoft Windows which has a popular Windows user interface but runs at higher cost reflecting additional licensing fees
+  * Ubuntu open source operating system
+* A Minecraft server
+ * Minecraft: Java Edition Server that supports computer clients and plugins for customization
+ * Minecraft: Bedrock Edition Server that supports consoles, mobile devices and Windows 10
+
+Pick one combination:
+
+| Operating System | Minecraft Type |
+| -- | -- |
+| Microsoft Windows | Minecraft: Java Edition |
+| Microsoft Windows | Minecraft: Bedrock Edition |
+| Ubuntu | Minecraft: Java Edition |
+| Ubuntu | Minecraft: Bedrock Edition |
 
 We have also included some cost optimization advice to optimize the cost of running your Minecraft server.
 
@@ -63,38 +76,28 @@ Details of minimum requirements can be found here: https://minecraft.fandom.com/
 
 Assuming 730.5 hours per month, prices are in USD.
 
-### Setup a Windows Lightsail instance
+### Setup an Amazon Lightsail instance
 
 * Log into your the AWS management console
 * Search for `Lightsail`
 * Select `Create instance`
 * Select the instance location in the region that is closest to your users
-* Under pick your instance image, select `Microsoft Windows`
-* Under select a blueprint, select `OS Only`
-* Select `Windows Server 2019`
+* For Microsoft Windows
+  * Under pick your instance image, select `Microsoft Windows`
+  * Under select a blueprint, select `OS Only`
+  * Select `Windows Server 2019`
+* For Ubuntu
+  * Under pick your instance image, select `Linux/Unix`
+  * Under select a blueprint, select `OS Only`
+  * Select `Ubuntu 20.04 LTS`
+  * Select the default SSH key pair for connecting to your instance
 * Select the instance plan based on the requirements table above
-* Identify your instance with a unique name, e.g. minecraft-windows-java-v1 or minecraft-windows-bedrock-v1
+* Identify your instance with a unique name, e.g. minecraft-v1
 * A best practice is to tag your AWS resources to organize your billing and control
   * Add a Key-value tags, e.g. Project -> Minecraft
 * Select `Create instance`
 
-Lightsail will return you to the Instances page and you should see your new Windows Server in a Pending state while it is being created. When the server is ready for use, select its name to view its connect details.
-
-### Setup a Ubuntu Lightsail instance
-
-* Log into your the AWS management console
-* Search for `Lightsail`
-* Select `Create instance`
-* Select the instance location in the region that is closest to your users
-* Under pick your instance image, select `Linux/Unix`
-* Under select a blueprint, select `OS Only`
-* Select `Ubuntu 20.04 LTS`
-* Select the default SSH key pair for connecting to your instance
-* Select the instance plan based on the requirements table above
-* Identify your instance with a unique name, e.g. minecraft-ubuntu-java-v1 or minecraft-ubuntu-bedrock-v1
-* A best practice is to tag your AWS resources to organize your billing and control
-  * Add a Key-value tags, e.g. Project -> Minecraft
-* Select `Create instance`
+Lightsail will return you to the Instances page and you should see your new server in a Pending state while it is being created. When the server is ready for use, select its name to view its connect details.
 
 ### Create Static IP
 
@@ -105,8 +108,8 @@ You can create static IP addresses to keep the same IP address every time you re
 * Select `+ Create static IP`
 * Identify your static IP with a unique name, e.g. minecraft-static-ip-v1
 * Select `Create`
-* Under Attach to an instance, select the name of your new Windows Server instance
-* Record the static ip address for the connection step below
+* Under Attach to an instance, select the name of your new server instance
+* Record the static IP address for the connection step below
 
 ### Configure Amazon Lightsail Networking
 
