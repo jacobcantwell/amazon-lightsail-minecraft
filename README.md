@@ -7,8 +7,8 @@ The instructions below will show you how to setup:
   * Microsoft Windows which has a popular Windows user interface but runs at higher cost reflecting additional licensing fees
   * Ubuntu open source operating system
 * A Minecraft server
- * Minecraft: Java Edition Server that supports computer clients and plugins for customization
- * Minecraft: Bedrock Edition Server that supports consoles, mobile devices and Windows 10
+  * Minecraft: Java Edition Server that supports computer clients and plugins for customization. This is the original version of Minecraft.
+  * Minecraft: Bedrock Edition Server that supports consoles, mobile devices and Windows 10. The current release is an early alpha release and is released for evaluation purposes.
 
 Pick one combination:
 
@@ -26,12 +26,13 @@ We have also included some cost optimization advice to optimize the cost of runn
 1. About Amazon Lightsail
 2. Create an Amazon Lightsail Instance
 3. Connect to an Amazon Lightsail Instance
-4. Setup Minecraft: Java Edition Server
-5. Setup Minecraft: Bedrock Edition Server
-6. Connecting Minecraft Clients
-7. Create an Amazon Lightsail Snapshot
-8. Delete an Amazon Lightsail Instance
-9. Restore an Amazon Lightsail Snapshot
+4. Windows - Setup Minecraft: Java Edition Server
+5. Windows - Setup Minecraft: Bedrock Edition Server
+6. Extending Minecraft: Java Edition with Plugins
+7. Connecting Minecraft Clients
+8. Create an Amazon Lightsail Snapshot
+9. Delete an Amazon Lightsail Instance
+10. Restore an Amazon Lightsail Snapshot
 
 ## About Amazon Lightsail
 
@@ -217,11 +218,11 @@ Microsoft disables file downloads by default in some versions of Internet Explor
 
 You can now download files.
 
-## Setup a Windows Minecraft: Java Edition Server
+## Windows - Setup a Minecraft: Java Edition Server
 
 Minecraft Java edition is the original version of Minecraft that supports computer clients.
 
-### Install Java 17 LTS
+### Windows - Install Java 17 LTS
 
 Java 17 LTS is the latest long-term support release for the Java SE platform. JDK 17 binaries are free to use in production and free to redistribute, at no cost, under the Oracle No-Fee Terms and Conditions License.
 
@@ -231,7 +232,7 @@ Test the Java installation:
 * Open a Terminal window
 * Test with `java --version`
 
-### Download Windows Minecraft: Java Edition Server
+### Windows - Download Minecraft: Java Edition Server
 
 You can download the official Minecraft: Java Edition server from the Minecraft website or there are many forks of Minecraft. The installation and running is similar. To support plugins we recommend the Paper version.
 
@@ -242,7 +243,7 @@ You can download the official Minecraft: Java Edition server from the Minecraft 
 
 Download the .jar files for each and save into a new folder. e.g. "C:\Program Files\minecraft"
 
-### Configure Windows Server Firewall for Minecraft: Java Edition
+### Windows - Configure Server Firewall for Minecraft: Java Edition
 
 If Window's firewall are set incorrectly, it will black the connection to your Minecraft server. 
 
@@ -256,7 +257,7 @@ If Window's firewall are set incorrectly, it will black the connection to your M
   * Tick the `Private` and `Public` checkboxes.
   * Select `OK` and close Control Panel.
 
-### Start Minecraft Server
+### Windows - Start Minecraft: Java Edition Server
 
 * Open a Terminal window
 * Use cd commands to move to the minecraft folder
@@ -264,29 +265,15 @@ If Window's firewall are set incorrectly, it will black the connection to your M
   * Minecraft e.g. `java -jar server.jar
   * Paper e.g. `java -jar paper-1.1#.#-###.jar
 
-### Extending Minecraft: Java Edition with Plugins
-
-To install these plugins, create a `Plugins` folder inside your Minecraft folder and add the .jar file for the plugin.
-
-| Plugin | Description | URL | Notes |
-| -- | -- | -- | -- |
-| WorldEdit | A Minecraft map editor | https://www.curseforge.com/minecraft/mc-mods/worldedit | -- |
-| WorldGuard | Lets players guard areas of land | https://dev.bukkit.org/projects/worldguard | -- |
-| Dynmap | A Google Maps-like map for your Minecraft server | https://dev.bukkit.org/projects/dynmap | Need to open port 8213 |
-
 ## Setup Minecraft: Bedrock Edition Server
-
-The current release of the Minecraft: Bedrock edition server software is an early alpha release and is released for evaluation purposes.
-
-Minecraft Bedrock edition supports consoles, mobile devices and Windows 10.
 
 ### Download Minecraft: Bedrock Edition Server
 
-You can download the official Minecraft: Bedrock Edition server from the Minecraft website.
+You can download the official Minecraft: Bedrock Edition server from the Minecraft website: [Download Bedrock Server Software for Minecraft](https://www.minecraft.net/en-us/download/server/bedrock).
 
-[Download Bedrock Server Software for Minecraft](https://www.minecraft.net/en-us/download/server/bedrock)
+Download either the Windows or Ubuntu version.
 
-### Configure Windows Server Firewall for Minecraft: Bedrock Edition
+### Windows - Configure Server Firewall for Minecraft: Bedrock Edition
 
 If Window's firewall are set incorrectly, it will black the connection to your Minecraft server. 
 
@@ -313,14 +300,49 @@ If Window's firewall are set incorrectly, it will black the connection to your M
   * Enter a name, e.g. minecraft-bedrock
   * Select `Finish`
 
-
-### Start Minecraft Server
+### Windows - Start Minecraft: Bedrock Edition Server
 
 Download the .zip file and save into a new folder. e.g. "C:\Program Files\minecraft"
-
 Unzip the container file into an empty folder. Start the server by executing the bedrock_server.exe file.
-
 Follow the bundled how to guide in `bedrock_server_how_to.html` to configure the server.
+
+### Ubuntu - Update and Install Minecraft
+
+Update the script below using the latest version of the Minecraft: Bedrock Edition Server for Ubuntu.
+
+Connect to the Ubuntu instance using SSH and run these commands:
+
+```bash
+apt-get update
+apt-get install -y unzip
+cd /home/ubuntu
+wget https://minecraft.azureedge.net/bin-linux/bedrock-server-1.17.32.02.zip
+unzip bedrock-server-1.17.32.02.zip -d /home/ubuntu
+echo "LD_LIBRARY_PATH=. ./bedrock_server" > minecraft.sh
+chmod +x minecraft.sh
+apt-get -y upgrade
+```
+
+### Ubuntu - Start Minecraft: Bedrock Edition Server
+
+Start Minecraft with this command:
+
+```bash
+minecraft.sh
+```
+
+
+## Extending Minecraft: Java Edition with Plugins
+
+To install these plugins, create a `Plugins` folder inside your Minecraft folder and add the .jar file for the plugin.
+
+| Plugin | Description | URL | Notes |
+| -- | -- | -- | -- |
+| WorldEdit | A Minecraft map editor | https://www.curseforge.com/minecraft/mc-mods/worldedit | -- |
+| WorldGuard | Lets players guard areas of land | https://dev.bukkit.org/projects/worldguard | -- |
+| Dynmap | A Google Maps-like map for your Minecraft server | https://dev.bukkit.org/projects/dynmap | Need to open port 8213 |
+
+
 
 ## Connecting Minecraft Clients
 
