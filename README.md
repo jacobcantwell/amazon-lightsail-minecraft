@@ -82,6 +82,25 @@ You can create static IP addresses to keep the same IP address every time you re
 * Under Attach to an instance, select the name of your new Windows Server instance
 * Record the static ip address for the connection step below
 
+### Create DNS Zone (optional)
+
+If you have registered your own domain name, you can 
+
+* In the Amazon Lightsail management console, select the `Networking` tab
+* Enter the domain name you want to manage in Amazon Lightsail, e.g. example.com
+* A best practice is to tag your AWS resources to organize your billing and control
+  * Add a Key-value tags, e.g. Project -> Minecraft
+* Select `Create DNS zone`
+* Select `+ Add record`
+* Select `A record`, this is to associate your domain or a subdomain with an IPv4 address
+* Enter a subdomain, e.g. minecraft-java
+* Under resolves to, select your static ip address
+* Select the `Green tick`
+
+You need to configure your domain provider to use the name servers that are listed under `Name servers`. If you setup an A record to your static IP address, then you can use this instead of the IP address for the remote desktop connection and for connecting to the server with your Minecraft clients. We recommend testing with these connections with the IP address first before switching to using a subdomain.
+
+More details on how to configure your DNS hosting to support Amazon Lightsail are here: https://lightsail.aws.amazon.com/ls/docs/en_us/articles/lightsail-how-to-create-dns-entry
+
 ## Connect to an Amazon Lightsail Instance
 
 Lightsail offers a 1-click secure connection to your instance's terminal right from your browser, supporting SSH access for Linux/Unix-based instances and RDP access for Windows-based instances. To use 1-click connections, launch your instance management screens, click Connect using SSH or Connect using RDP, and a new browser window opens and automatically connects to your instance.
@@ -217,8 +236,16 @@ If Window's firewall are set incorrectly, it will black the connection to your M
 
 * Search for and open Window's `Control Panel`
 * Open `System and Security`
-* Under `Windows Defender Firewall`, select `Allow an app through Windows Defender Firewall`
+* Select `Windows Defender Firewall`
+* Select `Advanced settings`, this will open a Windows Defender Firewall with Advanced Security popup
+* Select `Inbound Rules`
+* Under `Actions`, select `New Rule...`
+* For Rule Type, select `Port`
 
+
+
+
+* Search for the `minecraft-bedrock.exe`
 Todo: Add port 19132
 Todo: Add port 59478
 
