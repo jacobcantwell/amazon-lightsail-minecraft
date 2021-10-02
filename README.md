@@ -247,10 +247,26 @@ Minecraft Java edition is the original version of Minecraft that supports comput
 
 [Differences Between Minecraft: Java Edition and Minecraft](https://help.minecraft.net/hc/en-us/articles/360058534412-Differences-Between-Bedrock-and-Java)
 
+Every Minecraft client connecting to your Minecraft server will need a licensed copy of Mincecraft. You can purchase the application from the Minecraft store: https://www.minecraft.net/en-us/get-minecraft#
+
+### Minecraft: Java Edition Clients
+
+The original version of Minecraft! Java Edition has cross-platform play between Windows, Linux and macOS, and also supports user-created skins and mods. Includes a decade’s worth of updates, with much more to come! You can purchase this application from the Minecraft website: https://www.minecraft.net/en-us/store/minecraft-java-edition
+
+### Minecraft: Bedrock Edition Clients
+
+You can purchase the Bedrock versions of Minecraft for mobiles, consoles, and Windows 10 from the Minecraft store: https://www.minecraft.net/en-us/get-minecraft#
+
+### Connecting to your Minecraft: Java Edition Server
+
 * Open your Minecraft client (Java client for Java server, Bedrock client for Bedrock server)
-* Open a multi-player game
-* Enter the static IP address of the Minecraft server
-* Play
+* Select `Play`, this will open the Minecraft: Java Edition game
+* Select `Multiplayer`
+* Select `Add Server`
+  * Enter a Server Name
+  * Enter the Static IP address for your Minecraft: Java Edition Server, e.g. ##.##.###.###
+  * Select `Done`
+* Select the Minecraft server name and select `Join Server`
 
 ## Securing Minecraft
 
@@ -352,5 +368,4 @@ You still be charged for unattached resources if you do not delete them such as 
 
 ## TODO List for this Document
 
-* Check if need to open Windows firewall ports
 * Finish support for Bedrock Minecraft - the steps are similar but different ports are used
