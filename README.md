@@ -327,7 +327,7 @@ When settting up a server you need to edit a json file to grant a user operator 
     "bypassesPlayerLimit": false
   }
 ]
-```
+'''
 
 ### Allow List
 
@@ -341,7 +341,9 @@ In the Minecraft folder:
 
 #### Allow List Example for Minecraft: Java Edition
 
-```json for Minecraft: Java Edition
+For Minecraft: Java Edition
+
+```json
 [
   {
     "uuid": "####-replace-with-uuid-####",
@@ -358,7 +360,9 @@ A longer explanation can be found here: https://minecraft.fandom.com/wiki/Whitel
 
 #### Allow List Example for Minecraft: Bedrock Edition
 
-```json for Minecraft: Bedrock Edition
+For Minecraft: Bedrock Edition
+
+```json
 [
   {
     "xuid": "####-replace-with-uuid-####",
@@ -371,7 +375,7 @@ A longer explanation can be found here: https://minecraft.fandom.com/wiki/Whitel
     "ignoresPlayerLimit":false
   }
 ]
-```json
+```
 
 A longer explanation can be found here: https://www.gtxgaming.co.uk/clientarea/knowledgebase/628/How-to-whitelist-on-your-Bedrock-server.html
 
