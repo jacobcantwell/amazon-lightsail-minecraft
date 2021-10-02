@@ -5,20 +5,10 @@ This document will walk you through setting up a Minecraft Server on Amazon Ligh
 ## Table of Contents
 
 1. About Amazon Lightsail
-  * Pricing
-3. Setup Windows Server 2019 on AWS LightSail
-  * Instance Type
-  * Static IP
-  * Route 53 DNS
-  * Network Security 
-4. Connect to a Lightsail instance
-5. Setup Windows Server
-  * Install Java
-  * Install Minecraft or PaperMC
-  * Install Plugins - WorldGuard, WorldEdit
-  * Configure Firewall
-6. Connect Minecraft Client
-
+2. Create an Amazon Lightsail Instance
+3. Connect to an Amazon Lightsail Instance
+4. Setup a Minecraft: Java Edition Server
+5. Connecting Minecraft Clients
 
 ## About Amazon Lightsail
 
@@ -38,11 +28,11 @@ Lightsail plans are billed on an on-demand hourly rate. So Start your Lightsail 
 
 * Instance and disk point-in-time snapshots help back up the data on your Amazon Lightsail instances cost $0.05 USD GB/month
 
-## How do I remove the Amazon Lightsail resources from my AWS account?
+### How do I remove the Amazon Lightsail resources from my AWS account?
 
 To remove all your Lightsail resources, delete your Lightsail instances and resources attached to these instances, such as static IP addresses, snapshots, or block storage. Lightsail resources are billed incrementally in hours or in fractions of GB-months. When all Lightsail resources are deleted, you receive no further billing related to Lightsail. For details on deleting your Lightsail resources see: https://aws.amazon.com/premiumsupport/knowledge-center/shut-down-lightsail/
 
-## Create an Amazon Lightsail instance
+## Create an Amazon Lightsail Instance
 
 ### Minecraft System Requirements
 
@@ -86,13 +76,13 @@ You can create static IP addresses to keep the same IP address every time you re
 * Select `Create`
 * Under Attach to an instance, select the name of your new Windows Server instance
 
-## Connect to a Lightsail instance
+## Connect to an Amazon Lightsail Instance
 
 Lightsail offers a 1-click secure connection to your instance's terminal right from your browser, supporting SSH access for Linux/Unix-based instances and RDP access for Windows-based instances. To use 1-click connections, launch your instance management screens, click Connect using SSH or Connect using RDP, and a new browser window opens and automatically connects to your instance.
 
 
 
-## How to Setup a Minecraft: Java Edition Server
+## Setup a Minecraft: Java Edition Server
 
 ### Install Java 17 LTS
 
@@ -160,13 +150,42 @@ To install these plugins, create a `Plugins` folder inside your Minecraft folder
 | Dynmap | A Google Maps-like map for your Minecraft server | https://dev.bukkit.org/projects/dynmap | Need to open port 8213 |
 
 
-
-
 ## Connecting Minecraft Clients
 
+Minecraft Java edition is the original version of Minecraft that supports computer clients. Minecraft Bedrock edition supports consoles, mobile devices and Windows 10.
 
+[Differences Between Minecraft: Java Edition and Minecraft](https://help.minecraft.net/hc/en-us/articles/360058534412-Differences-Between-Bedrock-and-Java)
 
+* Open your Minecraft client (Java client for Java server, Bedrock client for Bedrock server)
+* Open a multi-player game
+* Enter the static IP address of the Minecraft server
+* Play
 
+## Securing Minecraft
 
+### OP
 
+``json
+[
+  {
+    "Name": "",
+    "UUID": ""
+    
+  }
+]
+``
+
+### Allow List
+
+* Configure server.properties
+
+``json
+[
+  {
+    "Name": "",
+    "UUID": ""
+    
+  }
+]
+``
 
