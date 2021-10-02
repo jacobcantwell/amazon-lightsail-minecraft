@@ -255,14 +255,31 @@ After the snapshot is created, you can choose `Start` at the top of the instance
 
 ## Delete an Amazon Lightsail Instance
 
-If you delete your Lightsail instance before the end of the month, AWS will charge you a prorated cost, based on the total number of hours that you used your Lightsail instance.  Deleting this instance will permanently destroy it, including all of its data.
+*Deleting this instance will permanently destroy it, including all of its data. Make sure you have created a manual snapshot of your instance before deleting.*
+
+If you delete your Lightsail instance before the end of the month, AWS will charge you a prorated cost, based on the total number of hours that you used your Lightsail instance.  
 
 * Open the Amazon Lightsail management console
+* Select the `Delete` tab
+* Select `Delete instance`
+* Select `Yes, delete`
+
+You still be charged for unattached resources if you do not delete them such as as the Static IP address and also for snapshot storage. 
+
+### Delete a Static IP address
+
+* Open the Amazon Lightsail management console
+* Select the `Networking` tab
+* Select the name of your static up instance. You should see a message `This static IP is not attached to an instance.`
+* Select the `Delete` tab
+* Select `Delete static IP`
+* Select `Yes, delete`
 
 ## Restore an Amazon Lightsail Snapshot
 
-
-
-
-
-
+* Open the Amazon Lightsail management console
+* Select the `Snapshots` tab
+* Expand the arrow listing the number of snapshots that you created for your instance, you should see a list of snapshots ordered by their creation date
+* Select the three vertical dot menu button
+* Select `Create new instance`
+* Follow the steps above for `Setup a Windows Lightsail instance`
