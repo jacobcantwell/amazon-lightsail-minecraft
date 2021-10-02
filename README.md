@@ -312,7 +312,7 @@ When settting up a server you need to edit a json file to grant a user operator 
 
 * In the Minecraft folder, edit the ops.json file
 
-``json
+```json
 [
   {
     "uuid": "####-replace-with-uuid-####",
@@ -327,15 +327,21 @@ When settting up a server you need to edit a json file to grant a user operator 
     "bypassesPlayerLimit": false
   }
 ]
-``
+```
 
 ### Allow List
 
-To only allow known players to connect to your Minecraft sever, you need to enforce an allow list.
+To only allow named players to connect to your Minecraft sever, you need to enforce an allow list. As well as manually editing the file, the command `/whitelist` can also be used by operators. 
 
-* In the Minecraft folder, edit the whitelist.json file
+In the Minecraft folder:
+* Edit the `whitelist.json` file
+  * Add the names of the users you want to allow access, see the examples below.
+* Edit the `server.properties` file
+  * Change the setting `enforce-whitelist=true`
 
-``json
+#### Allow List Example for Minecraft: Java Edition
+
+```json for Minecraft: Java Edition
 [
   {
     "uuid": "####-replace-with-uuid-####",
@@ -346,10 +352,28 @@ To only allow known players to connect to your Minecraft sever, you need to enfo
     "name": "####-replace-with-name-####"
   }
 ]
-``
+```
 
-* Edit the server.properties file
- * Change the setting `enforce-whitelist=true`
+A longer explanation can be found here: https://minecraft.fandom.com/wiki/Whitelist.json
+
+#### Allow List Example for Minecraft: Bedrock Edition
+
+```json for Minecraft: Bedrock Edition
+[
+  {
+    "xuid": "####-replace-with-uuid-####",
+    "name": "####-replace-with-name-####",
+    "ignoresPlayerLimit":false
+  },
+  {
+    "xuid": "####-replace-with-uuid-####",
+    "name": "####-replace-with-name-####",
+    "ignoresPlayerLimit":false
+  }
+]
+```json
+
+A longer explanation can be found here: https://www.gtxgaming.co.uk/clientarea/knowledgebase/628/How-to-whitelist-on-your-Bedrock-server.html
 
 ## Create an Amazon Lightsail Snapshot
 
