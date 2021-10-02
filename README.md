@@ -9,6 +9,9 @@ This document will walk you through setting up a Minecraft Server on Amazon Ligh
 3. Connect to an Amazon Lightsail Instance
 4. Setup a Minecraft: Java Edition Server
 5. Connecting Minecraft Clients
+6. Create an Amazon Lightsail Snapshot
+7. Delete an Amazon Lightsail Instance
+8. Restore an Amazon Lightsail Snapshot
 
 ## About Amazon Lightsail
 
@@ -18,7 +21,7 @@ Amazon Lightsail is a virtual private server (VPS) provider and is the easiest w
 
 Lightsail plans are billed on an on-demand hourly rate, so you pay only for what you use. For every Lightsail plan you use, we charge you the fixed hourly price, up to the maximum monthly plan cost. The advertised monthly price is an hourly-rate cap.
 
-Your Lightsail instances are charged only when they're in the running or stopped state. If you delete your Lightsail instance before the end of the month, we only charge you a prorated cost, based on the total number of hours that you used your Lightsail instance. 
+Your Lightsail instances are charged only when they're in the running or stopped state. If you delete your Lightsail instance before the end of the month, AWS will charge you a prorated cost, based on the total number of hours that you used your Lightsail instance. 
 
 AWS pricing for Amazon Lightsail is documented here: https://aws.amazon.com/lightsail/pricing/
 
@@ -75,14 +78,58 @@ You can create static IP addresses to keep the same IP address every time you re
 * Identify your static IP with a unique name, e.g. minecraft-java-static-ip-v1
 * Select `Create`
 * Under Attach to an instance, select the name of your new Windows Server instance
+* Record the static ip address for the connection step below
 
 ## Connect to an Amazon Lightsail Instance
 
 Lightsail offers a 1-click secure connection to your instance's terminal right from your browser, supporting SSH access for Linux/Unix-based instances and RDP access for Windows-based instances. To use 1-click connections, launch your instance management screens, click Connect using SSH or Connect using RDP, and a new browser window opens and automatically connects to your instance.
 
+### Microsoft Remote Desktop
 
+Gather connection details for your Amazon Lightsail instance. 
+
+* In the Amazon Lightsail management console, open your new Windows Server instance
+* Under the Connect tab, record the details:
+  * Connect to static ip address, e.g. ##.##.###.###
+  * User name, e.g. Administrator
+  * Select `Show default password`, copy the default password from the popup
+
+Enter the connection details in your Microsoft Remote Desktop application.
+
+* Microsoft Remote Desktop
+* Select `Add PC`
+* For the PC name, enter the static IP address from the the Amazon Lightsale management console for your Windows server
+* Enter a friendly name, e.g. minecraft-java-v1
+* Select `Connect to an admin session`
+* Select `Save`
+
+Initate the remote desktop connection
+
+* Open (double click) the remote desktop connection
+* Enter the Username
+* Enter the Password
+* Select `Continue`
+
+The Windows Server 2019 desktop should open.
 
 ## Setup a Minecraft: Java Edition Server
+
+### Internet Explorer Browser Security
+
+*We strongly recommend you consult your network administrator before performing the any security related steps. Making such configuration changes without consulting administrator may put your organization in a risk.*
+
+Microsoft disables file downloads by default in some versions of Internet Explorer as part of its security policy. To allow file downloads in Internet Explorer, follow these steps:
+
+* Open `Internet Explorer`.
+* From the `Tools` menu, select `Internet Options`.
+* In the `Internet Options` dialog box, click the `Security` tab.
+* Click `Custom Level`.
+* In the `Security Settings` dialog box, scroll to the `Downloads` section.
+* Under `File download`, select `Enable`, and then click `OK`.
+* In the confirmation dialog box, click `Yes`.
+* Click `OK` > `Apply` > `OK`.
+
+You can now download files.
 
 ### Install Java 17 LTS
 
@@ -123,8 +170,7 @@ If Window's firewall are set incorrectly, it will black the connection to your M
 
 You need to create Lightsail networking rules to open ports to the internet, or to a specific IPv4 address or range.
 
-* Log into your the AWS management console
-* Search for `Lightsail`
+* Open the Amazon Lightsail management console
 * Open your Windows Server instance
 * Select `Networking`
 * Under IPv4 Firewall, select `+ Add rule`
@@ -188,4 +234,35 @@ Minecraft Java edition is the original version of Minecraft that supports comput
   }
 ]
 ``
+
+## Create an Amazon Lightsail Snapshot
+
+When you are done playing Minecraft, stop your server instance, create a manual snapshot, and delete your instance. Lightsail plans are billed on an on-demand hourly rate. So Start your Lightsail instance when you are playing, snapshot and delete the instance when you have finished to reduce running costs. You can then restore the instance from the snapshot.
+
+For Windows instances, you must stop the instance before creating a snapshot. This is necessary to ensure a new administrator password is generated for the new instance you create from the snapshot. For more information, see [Creating a snapshot of your Windows Server instance in Amazon Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/prepare-windows-based-instance-and-create-snapshot).
+
+* Open the Amazon Lightsail management console
+* Open your Windows Server instance
+* Select `Stop`
+* Select `Snapshots`
+* Under manual snapshots, select `+ Create snapshot`
+* Give your snapshot a name
+* Select `Create`
+
+The snapshot process takes a few minutes to complete. 
+
+After the snapshot is created, you can choose `Start` at the top of the instance management page to start your instance again.
+
+## Delete an Amazon Lightsail Instance
+
+If you delete your Lightsail instance before the end of the month, AWS will charge you a prorated cost, based on the total number of hours that you used your Lightsail instance.  Deleting this instance will permanently destroy it, including all of its data.
+
+* Open the Amazon Lightsail management console
+
+## Restore an Amazon Lightsail Snapshot
+
+
+
+
+
 
