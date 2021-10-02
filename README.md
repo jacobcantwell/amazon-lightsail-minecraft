@@ -2,7 +2,11 @@
 
 This document will walk you through setting up a Minecraft Server on Amazon LightSail. It includes all of the steps for creating an Amazon Lightsail instance, connecting to the instance, installing a Minecraft server, then terminating and restoring the Amazon LightSail instance.
 
-You can setup an Amazon Lightsail instance running either the Microsoft Windows or Ubuntu operating systems. The instructions below will show you how to setup either the Minecraft: Java Edition Server that supports computer clients, or the Minecraft: Bedrock Edition Server that  supports consoles, mobile devices and Windows 10.
+The instructions below will show you how to setup:
+* an Amazon Lightsail instance running either the Microsoft Windows or Ubuntu operating systems
+* either the Minecraft: Java Edition Server that supports computer clients, or the Minecraft: Bedrock Edition Server that supports consoles, mobile devices and Windows 10
+
+We have also included some cost optimization advice to optimize the cost of running your Minecraft server.
 
 ## Table of Contents
 
@@ -96,7 +100,8 @@ Lightsail will return you to the Instances page and you should see your new Wind
 
 You can create static IP addresses to keep the same IP address every time you reboot your instance. For more information, see [Static IP addresses in Amazon Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/lightsail-create-static-ip). This makes it easier for your Minecraft clients to connect to your Minecraft server if you restart the instance.
 
-* In the Amazon Lightsail management console, open your new Server instance
+* Open the Amazon Lightsail management console
+* Open your server instance
 * Select `+ Create static IP`
 * Identify your static IP with a unique name, e.g. minecraft-static-ip-v1
 * Select `Create`
@@ -108,7 +113,7 @@ You can create static IP addresses to keep the same IP address every time you re
 You need to create Lightsail networking rules to open ports to the internet, or to a specific IPv4 address or range.
 
 * Open the Amazon Lightsail management console
-* Open your Windows Server instance
+* Open your server instance
 * Select `Networking`
 * Under IPv4 Firewall, select `+ Add rule`
 * For Minecraft: Java Edition
@@ -142,7 +147,27 @@ Lightsail offers a 1-click secure connection to your instance's terminal right f
 
 ### SSH for Ubuntu Servers
 
+You can connect to your Ubuntu instance using the browser-based SSH client built into Amazon Lightsail or connect using your own SSH client. For more details on connecting to Amazon Lightsail with SSH see: [Connect to your Linux or Unix instance using SSH in terminal](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-ssh-using-terminal)
 
+You will need the static IP address of your Ubuntu instance.
+
+* Open the Amazon Lightsail management console
+* Select `Account` in the top menu and select `Account`
+* Select the `SSH keys` tab
+* Download the Default ssh key for the AWS region of your instance
+
+* Open a terminal window on your local machine.
+* Enter the following command to make the private key of the key pair readable and writable only by you. This is a security best practice required by some operating systems.
+
+```bash
+sudo chmod 600 /path/to/private-key.pem
+```
+
+Update this command with the public static ip and location of your ssh .pem file.
+
+```bash
+ssh ubuntu@##.###.##.### -i ./Downloads/minecraft.pem
+```
 
 ### Microsoft Remote Desktop for Windows Servers
 
@@ -227,7 +252,6 @@ If Window's firewall are set incorrectly, it will black the connection to your M
   * Select `Add`
   * Tick the `Private` and `Public` checkboxes.
   * Select `OK` and close Control Panel.
-
 
 ### Start Minecraft Server
 
