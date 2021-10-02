@@ -327,7 +327,7 @@ When settting up a server you need to edit a json file to grant a user operator 
     "bypassesPlayerLimit": false
   }
 ]
-'''
+```
 
 ### Allow List
 
