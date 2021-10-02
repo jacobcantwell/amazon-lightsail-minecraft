@@ -100,6 +100,10 @@ Java 17 LTS is the latest long-term support release for the Java SE platform. JD
 
 Download and install the latest version of Java from https://www.oracle.com/java/technologies/downloads/#jdk17-windows
 
+Test the Java installation:
+* Open a Terminal window
+* Test with `java --version`
+
 ### Download Minecraft: Java Edition Server
 
 You can download the official Minecraft: Java Edition server from the Minecraft website or there are many forks of Minecraft. The installation and running is similar. To support plugins we recommend the Paper version.
@@ -136,6 +140,14 @@ You need to create Lightsail networking rules to open ports to the internet, or 
 * Under IPv4 Firewall, select `+ Add rule`
   * Add Application = Custom, Protocol = TCP, Port = 25565 
   * Add Application = Custom, Protocol = UDP, Port = 25565 
+
+### Start Minecraft Server
+
+* Open a Terminal window
+* Use cd commands to move to the minecraft folder
+* Start the minecraft server with the command: `java -jar [name-of-minecraft-jar]`
+  * Minecraft e.g. `java -jar server.jar
+  * Paper e.g. `java -jar paper-1.1#.#-###.jar
 
 ### Extending Minecraft: Java Edition with Plugins
 
