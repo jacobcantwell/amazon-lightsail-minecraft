@@ -240,14 +240,22 @@ If Window's firewall are set incorrectly, it will black the connection to your M
 * Select `Advanced settings`, this will open a Windows Defender Firewall with Advanced Security popup
 * Select `Inbound Rules`
 * Under `Actions`, select `New Rule...`
-* For Rule Type, select `Port`
-
-
-
-
-* Search for the `minecraft-bedrock.exe`
-Todo: Add port 19132
-Todo: Add port 59478
+* Under `Rule Type`
+ * Select `Port`
+ * Select `Next`
+* Under `Protocols and Ports`
+  * Select `UDP`
+  * Select `Specific local ports` and enter `19132`
+  * Select `Next`
+* Under `Action`
+  * Select `Allow the connection`
+  * Select `Next`
+* Under `Profile`
+  * Tick the `Domain`, `Private`, `Public` checkboxes
+  * Select `Next`
+* Under `Name`
+  * Enter a name, e.g. minecraft-bedrock
+  * Select `Finish`
 
 ### Configure Amazon Lightsail Firewall for Minecraft: Bedrock Edition
 
@@ -257,8 +265,7 @@ You need to create Lightsail networking rules to open ports to the internet, or 
 * Open your Windows Server instance
 * Select `Networking`
 * Under IPv4 Firewall, select `+ Add rule`
-  * Add Application = Custom, Protocol = UDP, Port = 19132 
-  * Add Application = Custom, Protocol = UDP, Port = 59478 
+  * Add Application = Custom, Protocol = UDP, Port = 19132
 
 ### Start Minecraft Server
 
@@ -396,3 +403,9 @@ You still be charged for unattached resources if you do not delete them such as 
 ## TODO List for this Document
 
 * Finish support for Bedrock Minecraft - the steps are similar but different ports are used
+* Add Application = Custom, Protocol = UDP, Port = 59478 
+* Search for the `minecraft-bedrock.exe`
+Todo: Add port 19132
+Todo: Add port 59478
+
+
