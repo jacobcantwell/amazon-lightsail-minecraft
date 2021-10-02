@@ -274,7 +274,7 @@ Download the .zip file and save into a new folder. e.g. "C:\Program Files\minecr
 
 Unzip the container file into an empty folder. Start the server by executing the bedrock_server.exe file.
 
-Follow the bundled how to guide to configure the server.
+Follow the bundled how to guide in `bedrock_server_how_to.html` to configure the server.
 
 ## Connecting Minecraft Clients
 
@@ -305,13 +305,16 @@ You can purchase the Bedrock versions of Minecraft for mobiles, consoles, and Wi
 
 ## Securing Minecraft
 
-The names and UUIDs of players can be discovered in the Minecraft server console when the players first join the server.
+The names and ids of players can be discovered in the Minecraft server console when the players first join the server.
  
-### OP - Operator Status
+### OP - Operator Status Permission List
 
 When settting up a server you need to edit a json file to grant a user operator status. The /op command can be used by existing operators to give other players operator status. When a player has been granted operator status, they can run game commands such as changing the gamemode, time, weather, etc.
 
-* In the Minecraft folder, edit the ops.json file
+#### Permission List Example for Minecraft: Java Edition
+
+For Minecraft: Java Edition:
+* In the Minecraft folder, edit the `ops.json` file
 
 ```json
 [
@@ -327,6 +330,30 @@ When settting up a server you need to edit a json file to grant a user operator 
     "level": 4,
     "bypassesPlayerLimit": false
   }
+]
+```
+
+#### Permission List Example for Minecraft: Bedrock Edition
+
+You can adjust player specific permissions by assigning them roles in the permissions.json that is placed in the same directory as the server executable. The file contains a simple JSON object with XUIDs and permissions. Valid permissions are: operator, member, visitor. Every player that connects with these accounts will be treated according to the set premission.
+
+For Minecraft: Bedrock Edition:
+* In the Minecraft folder, edit `permissions.json` file:
+
+```json
+[
+    {
+        "permission": "operator",
+        "xuid": "451298348"
+    },
+    {
+        "permission": "member",
+        "xuid": "52819329"
+    },
+    {
+        "permission": "visitor",
+        "xuid": "234114123"
+    }
 ]
 ```
 
