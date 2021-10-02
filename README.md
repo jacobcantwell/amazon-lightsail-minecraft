@@ -1,6 +1,6 @@
 # Minecraft Server on Amazon LightSail
 
-This document will walk you through setting up a Minecraft Server on Amazon LightSail. Both Minecraft: Java Edition ~~and Minecraft: Bedrock Edition are documented below~~.
+This document will walk you through setting up a Minecraft Server on Amazon LightSail.
 
 ## Table of Contents
 
