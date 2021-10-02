@@ -160,3 +160,13 @@ To install these plugins, create a `Plugins` folder inside your Minecraft folder
 | Dynmap | A Google Maps-like map for your Minecraft server | https://dev.bukkit.org/projects/dynmap | Need to open port 8213 |
 
 
+
+
+## Connecting Minecraft Clients
+
+
+
+
+
+
+
