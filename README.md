@@ -9,11 +9,12 @@ The instructions below will show you how to setup either the Minecraft: Java Edi
 1. About Amazon Lightsail
 2. Create an Amazon Lightsail Instance
 3. Connect to an Amazon Lightsail Instance
-4. Setup a Minecraft: Java Edition Server
-5. Connecting Minecraft Clients
-6. Create an Amazon Lightsail Snapshot
-7. Delete an Amazon Lightsail Instance
-8. Restore an Amazon Lightsail Snapshot
+4. Setup Minecraft: Java Edition Server
+5. Setup Minecraft: Bedrock Edition Server
+6. Connecting Minecraft Clients
+7. Create an Amazon Lightsail Snapshot
+8. Delete an Amazon Lightsail Instance
+9. Restore an Amazon Lightsail Snapshot
 
 ## About Amazon Lightsail
 
@@ -218,7 +219,7 @@ To install these plugins, create a `Plugins` folder inside your Minecraft folder
 | WorldGuard | Lets players guard areas of land | https://dev.bukkit.org/projects/worldguard | -- |
 | Dynmap | A Google Maps-like map for your Minecraft server | https://dev.bukkit.org/projects/dynmap | Need to open port 8213 |
 
-## Setup a Minecraft: Bedrock Edition Server
+## Setup Minecraft: Bedrock Edition Server
 
 The current release of the Minecraft: Bedrock edition server software is an early alpha release and is released for evaluation purposes.
 
