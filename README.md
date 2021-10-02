@@ -226,15 +226,21 @@ Minecraft Java edition is the original version of Minecraft that supports comput
 
 Download and install Java for Windows or Ubuntu with the links below.
 
-To test the Java installation:
-* Open a new terminal window
-* Test with `java --version`
+To test the Java installation, open a terminal window
+```bash
+java -version
+```
 
-#### Windows - Install Java 17 LTS
+#### Windows Only - Install Java 17 LTS
 
 Java 17 LTS is the latest long-term support release for the Java SE platform. JDK 17 binaries are free to use in production and free to redistribute, at no cost, under the Oracle No-Fee Terms and Conditions License. Download and install the latest version of Java from https://www.oracle.com/java/technologies/downloads/#jdk17-windows
 
+#### Ubuntu Only - Install Java
 
+Install with:
+```bash
+sudo apt install default-jre
+```
 
 ### Download Minecraft: Java Edition Server
 
@@ -290,12 +296,6 @@ To install these plugins, create a `Plugins` folder inside your Minecraft folder
 
 ## Setup Minecraft: Bedrock Edition Server
 
-### Download Minecraft: Bedrock Edition Server
-
-You can download the official Minecraft: Bedrock Edition server from the Minecraft website: [Download Bedrock Server Software for Minecraft](https://www.minecraft.net/en-us/download/server/bedrock).
-
-Download either the Windows or Ubuntu version.
-
 ### Windows Only - Configure Server Firewall for Minecraft: Bedrock Edition
 
 If Window's firewall are set incorrectly, it will black the connection to your Minecraft server. 
@@ -325,13 +325,15 @@ If Window's firewall are set incorrectly, it will black the connection to your M
 
 ### Windows Only - Install and Start Minecraft: Bedrock Edition Server
 
+You can download the official Minecraft: Bedrock Edition server for Windows from the Minecraft website: [Download Bedrock Server Software for Minecraft](https://www.minecraft.net/en-us/download/server/bedrock).
+
 Download the .zip file and save into a new folder. e.g. "C:\Program Files\minecraft"
 Unzip the container file into an empty folder. Start the server by executing the bedrock_server.exe file.
 Follow the bundled how to guide in `bedrock_server_how_to.html` to configure the server.
 
 ### Ubuntu Only - Install and Start Minecraft: Bedrock Edition Server
 
-Update the script below using the latest version of the Minecraft: Bedrock Edition Server for Ubuntu.
+Update the script below using the latest version of the Minecraft: Bedrock Edition Server for Ubuntu. You can copy the link to the official Minecraft: Bedrock Edition server for Ubuntu from the Minecraft website: [Download Bedrock Server Software for Minecraft](https://www.minecraft.net/en-us/download/server/bedrock).
 
 Connect to the Ubuntu instance using SSH and run these commands:
 
@@ -352,7 +354,22 @@ Start Minecraft with this command:
 minecraft.sh
 ```
 
+You can close the script with the `CTRL+c` command or it will close when the SSH connection terminates.
 
+#### Linux nohup command
+
+The [`nohup`](https://www.computerhope.com/unix/unohup.htm) command executes another command, and instructs the system to continue running it even if the session is disconnected.
+
+```bash
+nohup ./minecraft.sh &
+```
+
+When using &, you see the bash job ID in brackets, and the PID (process ID) listed after, e.g. [1] 25132
+
+You can terminate the process using the PID, e.g.
+```bash
+kill -9 25132
+```
 
 ## Connecting Minecraft Clients
 
@@ -384,7 +401,11 @@ You can purchase the Bedrock versions of Minecraft for mobiles, consoles, and Wi
 ## Securing Minecraft
 
 The names and ids of players can be discovered in the Minecraft server console when the players first join the server.
- 
+
+### Server Properties
+
+`server.properties` is the file that stores all the settings for a multiplayer server for both Java and Bedrock editions. For more details see: https://minecraft.fandom.com/wiki/Server.properties
+
 ### OP - Operator Status Permission List
 
 When settting up a server you need to edit a json file to grant a user operator status. The /op command can be used by existing operators to give other players operator status. When a player has been granted operator status, they can run game commands such as changing the gamemode, time, weather, etc.
