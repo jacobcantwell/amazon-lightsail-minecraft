@@ -1,19 +1,23 @@
-# minecraft-on-aws-lightsail
-Minecraft Server on AWS LightSail
+# Minecraft Server on Amazon LightSail
 
-1. Setup Windows Server 2019 on AWS LightSail
+This document will walk you through setting up a Minecraft Server on Amazon LightSail. Both Minecraft: Java Edition and Minecraft: Bedrock Edition are documented below.
+
+## Table of Contents
+
+1. About Amazon Lightsail
+  * Pricing
+3. Setup Windows Server 2019 on AWS LightSail
   * Instance Type
   * Static IP
   * Route 53 DNS
   * Network Security 
-2. Connect to a Lightsail instance
-3. Setup Windows Server
+4. Connect to a Lightsail instance
+5. Setup Windows Server
   * Install Java
   * Install Minecraft or PaperMC
   * Install Plugins - WorldGuard, WorldEdit
   * Configure Firewall
-4. Connect Minecraft Client
-
+6. Connect Minecraft Client
 
 
 ## About Amazon Lightsail
@@ -96,7 +100,7 @@ Java 17 LTS is the latest long-term support release for the Java SE platform. JD
 
 Download and install the latest version of Java from https://www.oracle.com/java/technologies/downloads/#jdk17-windows
 
-### Download Minecraft Server
+### Download Minecraft: Java Edition Server
 
 You can download the official Minecraft: Java Edition server from the Minecraft website or there are many forks of Minecraft. The installation and running is similar. To support plugins we recommend the Paper version.
 
@@ -107,7 +111,7 @@ You can download the official Minecraft: Java Edition server from the Minecraft 
 
 Download the .jar files for each and save into a new folder. e.g. "C:\Program Files\minecraft"
 
-### Configure Windows Firewall
+### Configure Windows Server Firewall for Minecraft: Java Edition
 
 If Window's firewall are set incorrectly, it will black the connection to your Minecraft server. 
 
@@ -121,7 +125,7 @@ If Window's firewall are set incorrectly, it will black the connection to your M
   * Tick the `Private` and `Public` checkboxes.
   * Select `OK` and close Control Panel.
 
-### Configure Lightsail Firewall
+### Configure Amazon Lightsail Firewall for Minecraft: Java Edition
 
 You need to create Lightsail networking rules to open ports to the internet, or to a specific IPv4 address or range.
 
