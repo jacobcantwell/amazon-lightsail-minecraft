@@ -2,6 +2,8 @@
 
 This document will walk you through setting up a Minecraft Server on Amazon LightSail. It includes all of the steps for creating an Amazon Lightsail instance, connecting to the instance, installing a Minecraft server, then terminating and restoring the Amazon LightSail instance.
 
+The instructions below will show you how to setup either the Minecraft: Java Edition Server that supports computer clients, or the Minecraft: Bedrock Edition Server that  supports consoles, mobile devices and Windows 10.
+
 ## Table of Contents
 
 1. About Amazon Lightsail
