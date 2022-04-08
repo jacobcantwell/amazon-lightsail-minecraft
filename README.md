@@ -461,7 +461,7 @@ For Minecraft: Bedrock Edition:
 To only allow named players to connect to your Minecraft sever, you need to enforce an allow list. As well as manually editing the file, the command `/whitelist` can also be used by operators. 
 
 In the Minecraft folder:
-* Edit the `whitelist.json` file
+* Edit the `allowlist.json` file
   * Add the names of the users you want to allow access, see the examples below.
 * Edit the `server.properties` file
   * Change the setting `enforce-whitelist=true`
